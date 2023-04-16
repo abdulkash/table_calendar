@@ -88,7 +88,9 @@ class CalendarPage extends StatelessWidget {
               decoration: rowDecoration,
               children: List.generate(
                 7,
-                (id) => dayBuilder(context, visibleDays[index + id]),
+                (id) => SingleChildScrollView(
+                  child: dayBuilder(context, visibleDays[index + id]),
+                ),
               ),
             ))
         .toList();
