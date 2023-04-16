@@ -42,12 +42,14 @@ class CalendarPage extends StatelessWidget {
         children: [
           if (weekNumberVisible) _buildWeekNumbers(context),
           Expanded(
-            child: Table(
-              border: tableBorder,
-              children: [
-                if (dowVisible) _buildDaysOfWeek(context),
-                ..._buildCalendarDays(context),
-              ],
+            child: SingleChildScrollView(
+              child: Table(
+                border: tableBorder,
+                children: [
+                  if (dowVisible) _buildDaysOfWeek(context),
+                  ..._buildCalendarDays(context),
+                ],
+              ),
             ),
           ),
         ],
@@ -88,9 +90,7 @@ class CalendarPage extends StatelessWidget {
               decoration: rowDecoration,
               children: List.generate(
                 7,
-                (id) => SingleChildScrollView(
-                  child: dayBuilder(context, visibleDays[index + id]),
-                ),
+                (id) => dayBuilder(context, visibleDays[index + id]),
               ),
             ))
         .toList();
